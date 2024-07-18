@@ -1,0 +1,15 @@
+import os
+import requests
+import json
+import pandas as pd
+
+url = r'https://api-seller.ozon.ru/v1/description-category/tree'
+
+with open("Тут должен быть путь до файлика с api-ключами", 'r') as keys:
+    dict_api = json.load(keys)
+
+headers = {
+    'Client-Id': dict_api[0]['client_id'],
+    'Api-Key': dict_api[0]['api_key']}
+
+response = requests.post(url, headers=headers)
